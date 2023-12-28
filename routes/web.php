@@ -15,14 +15,18 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::redirect('/', 'login');
+Route::get('/', function(){
+    return view('pages.user.index');
+})->name('index');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // Route for the getting the data feed
     Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::middleware('admin')->group(function(){
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    });
     Route::fallback(function() {
         return view('pages/utility/404');
     });    
