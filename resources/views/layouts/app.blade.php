@@ -58,6 +58,21 @@
 
         </div>
         @livewireScripts
-        @include('components.alert.alert')
+        <script>
+            window.addEventListener('DOMContentLoaded', function(){
+                window.addEventListener("messages", function (e) {
+                    Swal.fire({
+                        title: e.detail.title,
+                        icon: e.detail.icon,
+                        iconColor: e.detail.iconColor,
+                        timer: 3000,
+                        toast: true,
+                        position: "top-right",
+                        timerProgressBar: true,
+                        showConfirmButton: false,
+                    });
+                });
+            })
+        </script>
     </body>
 </html>
