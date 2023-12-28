@@ -29,6 +29,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('user', [UserController::class, 'index'])->name('user.index');
+        Route::get('wisata', function(){
+            return view('pages.dashboard.wisata.index');
+        })->name('wisata.index');
+        Route::get('wisata/create', function(){
+            return view('pages.dashboard.wisata.create');
+        })->name('wisata.create');
     });
     Route::fallback(function() {
         return view('pages/utility/404');

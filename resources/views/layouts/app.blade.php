@@ -23,7 +23,8 @@
                 document.querySelector('html').classList.add('dark');
                 document.querySelector('html').style.colorScheme = 'dark';
             }
-        </script>          
+        </script>
+        <x-head.tinymce-config/>        
     </head>
     <body
         class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400"
@@ -58,6 +59,7 @@
 
         </div>
         @livewireScripts
+        @stack('scripts')
         <script>
             window.addEventListener('DOMContentLoaded', function(){
                 window.addEventListener("messages", function (e) {

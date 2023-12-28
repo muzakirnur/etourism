@@ -1,11 +1,18 @@
 <div class="bg-white p-4">
     <div class="w-full mb-2 flex flex-wrap">
         <div class="w-1/2">
-            <select id="paginate" wire:model='paginate' class="form-input">
+            <select id="paginate" wire:model='paginate' class="form-select">
                 <option value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
+            </select>
+            <select id="selectedTyope" wire:model='selectedType' class="form-select">
+                <option hidden>Pilih Kategori</option>
+                <option value="Alam">Alam</option>
+                <option value="Religi">Religi</option>
+                <option value="Budaya">Budaya</option>
+                <option value="Kuliner">Kuliner</option>
             </select>
         </div>
         <div class="w-1/2 text-end">
