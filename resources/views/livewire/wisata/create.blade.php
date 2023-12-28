@@ -44,7 +44,7 @@
             </span>
             @enderror
         </div>
-        <div class="p-2" wire:ignore>
+        <div class="p-2 h-max w-full mb-8" wire:ignore>
             <x-jet-label for="deskripsi" value="{{ __('Deskripsi') }}" />
             <textarea id="myeditorinstance" wire:model='deskripsi'></textarea>
             @error('deskripsi')
@@ -53,26 +53,27 @@
             </span>
             @enderror
         </div>
+        <div wire:ignore id="map" style="width: 100%; height: 400px;padding:0.5rem;"></div>
         <div class="p-2 text-end">
             <button type="submit" class="btn bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap">Simpan</button>
         </div>
     </form>
 </div>
 @push('scripts')
-<script>
-    tinymce.init({
-      selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
-      forced_root_block : false,
-      plugins: 'code table lists',
-      toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
-      setup: function (editor) {
-                editor.on('init change', function () {
-                    editor.save();
-                });
-                editor.on('change', function (e) {
-                    @this.set('deskripsi', editor.getContent());
-                });
-            }
-    });
-  </script>
+    <script type="text/javascript">
+            tinymce.init({
+            selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
+            forced_root_block : false,
+            plugins: 'code table lists',
+            toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
+            setup: function (editor) {
+                        editor.on('init change', function () {
+                            editor.save();
+                        });
+                        editor.on('change', function (e) {
+                            @this.set('deskripsi', editor.getContent());
+                        });
+                    }
+            });
+    </script>
 @endpush
