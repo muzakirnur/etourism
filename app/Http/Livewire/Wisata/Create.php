@@ -56,7 +56,6 @@ class Create extends Component
             $this->emit('wisataAdded');
             $this->reset();
         }catch(\Exception $e){
-            dd($e->getMessage());
             if(isset($wisata)){
                 if($wisata->pictures){
                     foreach($wisata->pictures as $picture){

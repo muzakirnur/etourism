@@ -8,7 +8,7 @@
                 <option value="100">100</option>
             </select>
             <select id="selectedTyope" wire:model='selectedType' class="form-select">
-                <option hidden>Pilih Kategori</option>
+                <option value="">Pilih Kategori</option>
                 <option value="Alam">Alam</option>
                 <option value="Religi">Religi</option>
                 <option value="Budaya">Budaya</option>
@@ -24,10 +24,13 @@
         <thead class="text-xs uppercase text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-700 dark:bg-opacity-50 rounded-sm">
             <tr>
                 <th class="p-2">
-                    <div class="font-semibold text-left">Nama</div>
+                    <div class="font-semibold text-left">Gambar</div>
                 </th>
                 <th class="p-2">
-                    <div class="font-semibold text-center">Email</div>
+                    <div class="font-semibold text-center">Nama</div>
+                </th>
+                <th class="p-2">
+                    <div class="font-semibold text-center">Kategori</div>
                 </th>
                 <th class="p-2">
                     <div class="font-semibold text-end">Action</div>
@@ -40,10 +43,15 @@
             @foreach ($data as $row) 
             <tr>
                 <td class="p-2">
-                    <div class="text-left">{{ $row->name }}</div>
+                    @if ($row->pictures)
+                    <img class="w-96 h-48" src="{{ asset('storage/'.$row->pictures[0]->path) }}" alt="{{ $row->name }}">
+                    @endif
                 </td>
                 <td class="p-2">
-                    <div class="text-center">{{ $row->email }}</div>
+                    <div class="text-center">{{ $row->nama }}</div>
+                </td>
+                <td class="p-2">
+                    <div class="text-center">{{ $row->kategori }}</div>
                 </td>
                 <td class="p-2">
                     <div class="w-full text-end">
