@@ -23,9 +23,12 @@ const loader = new Loader({
 
 loader.load().then(async () => {
     const { Map } = await window.google.maps.importLibrary("maps");
-    map = new Map(document.getElementById("map"), {
-        center: { lat: 5.219781444770235, lng: 96.71369179789342 },
+    var map = new Map(document.getElementById("map"), {
+        center: { lat: 5.222095645948298, lng: 96.7176358736235 },
         zoom: 15,
+    });
+    google.maps.event.addListener(map, "click", function (event) {
+        placeMarker(event.latLng, map);
     });
 });
 

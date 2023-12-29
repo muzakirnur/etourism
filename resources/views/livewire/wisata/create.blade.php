@@ -53,7 +53,15 @@
             </span>
             @enderror
         </div>
-        <div wire:ignore id="map" style="width: 100%; height: 400px;padding:0.5rem;"></div>
+        <div class="p-2">
+            <x-jet-label for="maps" value="{{ __('Lokasi') }}" />
+            <div wire:ignore id="map" style="width: 100%; height: 400px;padding:0.5rem;"></div>
+            @error('lat')
+            <span class="error text-red-500">
+                {{ $message }}
+            </span>
+            @enderror
+        </div>
         <div class="p-2 text-end">
             <button type="submit" class="btn bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap">Simpan</button>
         </div>
@@ -75,5 +83,29 @@
                         });
                     }
             });
+    </script>
+    <script>
+        var marker;
+        var lat;
+        var lng;
+        function placeMarker(location, map) {
+            if (marker) {
+                marker.setPosition(location);
+            } else {
+                marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                });
+            }
+            lat = marker.getPosition().lat();
+            lng = marker.getPosition().lng();
+            @this.set('lat', lat);
+            @this.set('lng', lng);
+        }
+        Livewire.on('wisataAdded', ()=>{
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
+        });
     </script>
 @endpush

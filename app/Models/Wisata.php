@@ -12,7 +12,7 @@ class Wisata extends Model
 
     protected $guarded = [];
 
-    public function picture():HasMany
+    public function pictures():HasMany
     {
         return $this->hasMany(Picture::class);
     }
