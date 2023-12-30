@@ -16,9 +16,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function(){
-    return view('pages.user.index');
-})->name('index');
+Route::redirect('/', 'login');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 

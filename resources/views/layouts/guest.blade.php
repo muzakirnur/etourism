@@ -23,7 +23,6 @@
         </script>          
     </head>
     <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
-
         <main class="bg-white">
 
             <!-- Content -->
@@ -32,7 +31,7 @@
                 <div class="min-h-screen h-full">
 
                     <!-- Header -->
-                    <div>
+                    <div class="bg-indigo-100">
                         <div class="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
                             <!-- Logo -->
                             <a class="block" href="{{ route('dashboard') }}">
@@ -53,6 +52,11 @@
                                     <path d="M2.223 24.14L29.777 7.86A15.926 15.926 0 0132 16c0 8.837-7.163 16-16 16-5.864 0-10.991-3.154-13.777-7.86z" fill="url(#logo-b)" />
                                 </svg>
                             </a>
+                            <div class="flex flex-wrap justify-evenly">
+                                <a href="/" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Home</a>
+                                <a href="#" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Contact</a>
+                                <a href="{{ route('login') }}" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Login</a>
+                            </div>
                         </div>
                     </div>
 
