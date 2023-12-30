@@ -44,7 +44,7 @@
             <tr>
                 <td class="p-2">
                     @if ($row->pictures)
-                    <img class="w-96 h-48" src="{{ asset('storage/'.$row->pictures[0]->path) }}" alt="{{ $row->name }}">
+                    <img class="w-96 h-48" src="{{ asset('storage/'.$row->pictures->first()->path) }}" alt="{{ $row->name }}">
                     @endif
                 </td>
                 <td class="p-2">

@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Hotel extends Model
+class HotelPicture extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function pictures():HasMany
+    public function hotel():BelongsTo
     {
-        return $this->hasMany(HotelPicture::class);
+        return $this->belongsTo(Hotel::class);
     }
 }

@@ -23,7 +23,7 @@
                     <div class="font-semibold text-center">Nama</div>
                 </th>
                 <th class="p-2">
-                    <div class="font-semibold text-center">Kategori</div>
+                    <div class="font-semibold text-center">Alamat</div>
                 </th>
                 <th class="p-2">
                     <div class="font-semibold text-end">Action</div>
@@ -37,14 +37,14 @@
             <tr>
                 <td class="p-2">
                     @if ($row->pictures)
-                    <img class="w-96 h-48" src="{{ asset('storage/'.$row->pictures[0]->path) }}" alt="{{ $row->name }}">
+                    <img class="w-96 h-48" src="{{ asset('storage/'.$row->pictures->first()->path) }}" alt="{{ $row->name }}">
                     @endif
                 </td>
                 <td class="p-2">
                     <div class="text-center">{{ $row->nama }}</div>
                 </td>
                 <td class="p-2">
-                    <div class="text-center">{{ $row->kategori }}</div>
+                    <div class="text-center">{{ $row->alamat }}</div>
                 </td>
                 <td class="p-2">
                     <div class="w-full text-end">

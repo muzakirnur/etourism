@@ -29,15 +29,22 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('user', [UserController::class, 'index'])->name('user.index');
+
+        /* Route for Wisata */
         Route::get('wisata', function(){
             return view('pages.dashboard.wisata.index');
         })->name('wisata.index');
         Route::get('wisata/create', function(){
             return view('pages.dashboard.wisata.create');
         })->name('wisata.create');
+
+        /* Route for Hotel */
         Route::get('hotel', function(){
             return view('pages.dashboard.hotel.index');
         })->name('hotel.index');
+        Route::get('hotel/create', function(){
+            return view('pages.dashboard.hotel.create');
+        })->name('hotel.create');
     });
     Route::fallback(function() {
         return view('pages/utility/404');
