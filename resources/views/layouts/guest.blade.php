@@ -54,8 +54,13 @@
                             </a>
                             <div class="flex flex-wrap justify-evenly">
                                 <a href="/" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Home</a>
-                                <a href="#" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Contact</a>
-                                <a href="{{ route('login') }}" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Login</a>
+                                <a href="{{ route('contact') }}" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Contact</a>
+                                @auth
+                                    <hr class="w-px h-6 bg-slate-600 mt-2 mr-2 ml-2 dark:bg-slate-700 border-none" />
+                                    <x-dropdown-profile align="right" />
+                                    @else
+                                    <a href="{{ route('login') }}" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Login</a>
+                                @endauth
                             </div>
                         </div>
                     </div>

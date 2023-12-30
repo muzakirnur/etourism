@@ -18,10 +18,18 @@ use App\Http\Controllers\UserController;
 
 Route::redirect('/', 'login');
 
+Route::get('contact', function(){
+    return view('pages.user.contact.index');
+})->name('contact');
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // Route for the getting the data feed
     Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
+
+    Route::get('home', function(){
+        return view('pages.user.index');
+    })->name('index');
 
     Route::middleware('admin')->prefix('admin')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
