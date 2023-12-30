@@ -35,6 +35,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('wisata/create', function(){
             return view('pages.dashboard.wisata.create');
         })->name('wisata.create');
+        Route::get('hotel', function(){
+            return view('pages.dashboard.hotel.index');
+        })->name('hotel.index');
     });
     Route::fallback(function() {
         return view('pages/utility/404');

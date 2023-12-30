@@ -98,7 +98,7 @@
                     </li>
                     <!-- Hotel -->
                     <li class="px-3 py-2 rounded-sm mb-0.5 last:mb-0 @if(in_array(Request::segment(2), ['hotel'])){{ 'bg-slate-900' }}@endif">
-                        <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if(in_array(Request::segment(2), ['hotel'])){{ 'hover:text-slate-200' }}@endif" href="#0">
+                        <a class="block text-slate-200 hover:text-white truncate transition duration-150 @if(in_array(Request::segment(2), ['hotel'])){{ 'hover:text-slate-200' }}@endif" href="{{ route('hotel.index') }}">
                             <div class="flex items-center">
                                 <svg class="shrink-0 h-6 w-6" viewBox="0 0 24 24">
                                     <path class="fill-current @if(in_array(Request::segment(2), ['hotel'])){{ 'text-primary' }}@else{{ 'text-slate-600' }}@endif" d="M19 5h1v14h-2V7.414L5.707 19.707 5 19H4V5h2v11.586L18.293 4.293 19 5Z" />
