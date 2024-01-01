@@ -26,10 +26,6 @@
         </div>
         <div class="flex items-center justify-between mt-6">
             <div class="mr-1">
-                <label class="flex items-center" name="newsletter" id="newsletter">
-                    <input type="checkbox" class="form-checkbox" />
-                    <span class="text-sm ml-2">Email me about product news.</span>
-                </label>
             </div>
             <x-jet-button>
                 {{ __('Sign Up') }}

@@ -10,6 +10,9 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        @livewireStyles
+
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script>
@@ -65,7 +68,7 @@
                         </div>
                     </div>
 
-                    <div class="w-full max-w-3xl mx-auto px-4 py-8">
+                    <div class="w-full mx-auto px-4 py-8">
                         {{ $slot }}
                     </div>
 
@@ -75,6 +78,8 @@
 
             </div>
 
-        </main>        
+        </main>   
+        @livewireScripts
+
     </body>
 </html>

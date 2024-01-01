@@ -31,6 +31,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return view('pages.user.index');
     })->name('index');
 
+    Route::get('wisata/{id}', [UserController::class, 'wisataShow'])->name('user.wisata.show');
+
     Route::middleware('admin')->prefix('admin')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

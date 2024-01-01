@@ -1,3 +1,3 @@
 <x-guest-layout>
-    <h1>Index</h1>
+    <livewire:frontend.user.search/>
 </x-guest-layout>

@@ -45,7 +45,7 @@ class Create extends Component
             for($i=0;$i<count($this->photos);$i++){
                 $pictures[$i] = Picture::create([
                     'wisata_id' => $wisata->id,
-                    'path' => $this->photos[$i]->store('wisata/'.$wisata->nama, 'public')
+                    'path' => $this->photos[$i]->store('wisata/'.$wisata->id, 'public')
                 ]);
             }
             $this->dispatchBrowserEvent('messages', [
@@ -65,7 +65,7 @@ class Create extends Component
                 $wisata->delete();
             }
             $this->dispatchBrowserEvent('messages', [
-                'title' => 'Wisata Gagal ditambahkan!',
+                'title' => $e->getMessage(),
                 'icon' => 'error',
                 'iconColor' => 'red'
             ]);

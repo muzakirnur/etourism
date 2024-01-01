@@ -34,8 +34,8 @@
                     <div class="min-h-screen h-full flex flex-col after:flex-1">
 
                         <!-- Header -->
-                        <div class="flex-1 bg-indigo-100">
-                            <div class="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
+                        <div class="flex-1">
+                            <div class="flex bg-indigo-100 items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
                                 <!-- Logo -->
                                 <a class="block font-semibold" href="{{ route('dashboard') }}">
                                     {{ config('app.name') }}
