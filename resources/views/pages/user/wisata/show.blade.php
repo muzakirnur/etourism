@@ -43,8 +43,36 @@
             document.addEventListener('DOMContentLoaded', function(){
                 var lat = {{ $wisata->lat }};
                 var lng = {{ $wisata->lng }};
-                const position = {lat:lat, lng:lng};
-                setMarker(position)
+                const location = {lat:lat, lng:lng};
+                let map;
+
+                async function initMap() {
+                    // The location of Uluru
+                    const position = { lat: 5.221809197503294, lng: 96.71791035533619 };
+                    // Request needed libraries.
+                    //@ts-ignore
+                    const { Map } = await google.maps.importLibrary("maps");
+                    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+                    // The map, centered at Uluru
+                    map = new Map(document.getElementById("map"), {
+                        zoom: 15,
+                        center: location,
+                        mapId: "user",
+                    });
+
+                    const marker = new AdvancedMarkerElement({
+                        map:map,
+                        position:location,
+                        title:"{{ $wisata->nama }}"
+                    })
+
+                    const infowindow = new google.maps.InfoWindow({
+                        ariaLabel: "{{ $wisata->nama }}",
+                    });
+                }
+                initMap();
+
             })
         </script>
         @endpush
