@@ -8,16 +8,11 @@
     <div class="w-full p-4 mb-4">
         <div class="grid grid-cols-4 gap-4 w-full">
             @foreach ($data as $row)
-            <a href="{{ route('user.wisata.show', Crypt::encrypt($row->id)) }}">
-                <div class="max-w-sm rounded overflow-hidden shadow-lg max-h-[240] min-h-max">
-                    <img class="w-full" src="{{ asset('storage/'.$row->pictures->first()->path) }}" alt="Sunset in the mountains">
-                    <div class="px-6 py-4">
-                      <div class="font-bold text-xl mb-2">{{ $row->nama }}</div>
-                      <p class="text-gray-700 text-base">
-                        {!! Str::limit($row->deskripsi, 240) !!}
-                      </p>
-                    </div>
-                  </div>
+            <a href="{{ route('user.wisata.show', Crypt::encrypt($row->id)) }}" class="relative">
+                <div>
+                    <img class="h-auto max-w-full rounded-lg" src="{{ asset('storage/'.$row->pictures->first()->path) }}" alt="{{ $row->nama }}">
+                    <div class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-center text-6xl text-white font-semibold">{{ $row->nama }}</div>
+                </div>
             </a>
             @endforeach
         </div>

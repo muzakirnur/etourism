@@ -17,7 +17,6 @@
         "vite": "^4.3.9"
     },
     "dependencies": {
-        "@googlemaps/js-api-loader": "^1.16.2",
         "chart.js": "^4.3.0",
         "chartjs-adapter-moment": "^1.0.1",
         "flatpickr": "^4.6.13",

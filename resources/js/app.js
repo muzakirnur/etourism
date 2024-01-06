@@ -14,24 +14,6 @@ import flatpickr from "flatpickr";
 // Import TailwindCSS variables
 import { tailwindConfig } from "./utils";
 
-import { Loader } from "@googlemaps/js-api-loader";
-
-const loader = new Loader({
-    apiKey: "AIzaSyAAqwny9wha5aHk0qs8J8OLZYCrKfNwJpE",
-    version: "weekly",
-});
-
-loader.load().then(async () => {
-    const { Map } = await window.google.maps.importLibrary("maps");
-    var map = new Map(document.getElementById("map"), {
-        center: { lat: 5.222095645948298, lng: 96.7176358736235 },
-        zoom: 15,
-    });
-    google.maps.event.addListener(map, "click", function (event) {
-        placeMarker(event.latLng, map);
-    });
-});
-
 // import component from './components/component';
 import dashboardCard01 from "./components/dashboard-card-01";
 import dashboardCard02 from "./components/dashboard-card-02";
