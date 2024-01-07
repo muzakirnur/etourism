@@ -1,7 +1,7 @@
 <div id="reviewForm">
     <h2 class="font-semibold">Tambah Ulasan Anda</h2>
     <form wire:submit.prevent='submit'>
-    <div class="p-2 grid grid-cols-2 gap-4">
+    <div class="w-full p-2 md:grid md:grid-cols-2 gap-4">
             <div class="mb-4">
                 <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu Kunjungan</label>
                 <div class="relative w-full">
@@ -73,9 +73,8 @@
         var bintang;
         if(!bintang){
             $("svg").hover(function(){
-                const number = $(this).attr('id')
-                for(let i=1;i <= parseInt(number)+1;i++){
-                    console.log(i);
+                const number = parseInt($(this).attr('id'))
+                for(let i=1;i <= number+1;i++){
                     if(i<=number){
                         $("#"+i).addClass("text-yellow-500");
                     }else{
@@ -84,8 +83,8 @@
                 }
             })
             $("svg").click(function(){
-            const number = $(this).attr('id')
-            bintang = parsenInt(number);
+            const number = parseInt($(this).attr('id'))
+            bintang = number;
                 for(let i=1;i <= number+1;i++){
                     if(i<=number){
                         $("#"+i).addClass("text-yellow-500");

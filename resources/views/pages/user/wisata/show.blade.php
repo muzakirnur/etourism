@@ -1,11 +1,11 @@
 <x-guest-layout>
-        <div class="jutify-center items-center mb-4 p-4">
+        <div class="jutify-center items-center p-2">
             <h2 class="font-semibold text-center text-3xl">{{ $wisata->nama }}</h2>
         </div>
-        <div class="w-3/4 p-2 mx-auto mb-4">
+        <div class="w-full lg:w-3/4 p-2 mx-auto mb-4">
             <div id="animation-carousel" class="relative w-full" data-carousel="static">
                 <!-- Carousel wrapper -->
-                <div class="relative h-96 overflow-hidden rounded-lg md:h-96">
+                <div class="relative h-40 overflow-hidden rounded-lg md:h-96">
                      <!-- Item 1 -->
                      @foreach ($wisata->pictures as $row)
                      <div class="hidden duration-200 ease-linear" data-carousel-item>
@@ -32,13 +32,13 @@
                 </button>
             </div>
         </div>
-        <div class="w-3/4 mx-auto mb-4">
+        <div class="w-full lg:w-3/4 mx-auto mb-4">
             {!! $wisata->deskripsi !!}
         </div>
-        <div class="w-3/4 mx-auto mb-8">
-            <div id="map" style="width: 100%; height: 400px;padding:0.5rem;"></div>
+        <div class="w-full lg:w-3/4 mx-auto mb-8">
+            <div id="map" style="width: 100%; height: 600px;padding:0.5rem;"></div>
         </div>
-        <div class="w-3/4 mx-auto mb-4">
+        <div class="w-full lg:w-3/4 mx-auto mb-4">
             <div class="flex items-center justify-center">
                 @for ($i = 1; $i < 6; $i++)
                 <svg class="w-4 h-4 {{ $i <= round($wisata->totalRating()) ? 'text-yellow-300' : 'text-gray-500 dark:text-gray-400' }} me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
@@ -51,10 +51,10 @@
             </div>
             <h3 class="font-semibold text-lg">Ulasan Terakhir</h3>
         </div>
-        <div class="w-3/4 flex mx-auto mb-8">
-            <div class="grid grid-cols-3 gap-4">
+        <div class="w-full md:w-3/4 flex mx-auto mb-8">
+            <div class="w-full md:grid md:grid-cols-3 gap-4">
                 @foreach ($wisata->rating->sortByDesc('updated_at')->take(6) as $row)
-                <figure class="max-w-screen-md border p-4 rounded-lg">
+                <figure class="max-w-screen-md border p-4 rounded-lg mb-4">
                     <div class="flex flex-wrap items-center mb-4">
                         <figcaption class="flex items-center space-x-3 rtl:space-x-reverse w-3/4 align-middle">
                             <img class="w-6 h-6 rounded-full" src="{{ $row->user->profile_photo_url}}" alt="profile picture">
@@ -86,7 +86,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="w-3/4 mx-auto">
+        <div class="w-full md:w-3/4 mx-auto">
             @php
                 $userHadReview = Auth::user()->wisataRating->where('wisata_id', $wisata->id)->first();
             @endphp
@@ -175,6 +175,11 @@
                         zoom: 15,
                         center: lokasiWisata,
                         mapId: "user",
+                        mapTypeControl: true,
+                        mapTypeControlOptions: {
+                            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                            mapTypeIds: ["roadmap", "terrain"],
+                        },
                     });
                     const locationButton = createCenterControl(map);
 
