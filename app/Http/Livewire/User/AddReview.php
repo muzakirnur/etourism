@@ -17,6 +17,14 @@ class AddReview extends Component
     public $jenis;
     public $bintang;
 
+    protected $rules = [
+        'date' => ['required', 'date'],
+        'ulasan' => ['required', 'string'],
+        'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
+        'jenis' => ['required'],
+        'bintang' => ['required']
+    ];
+
     public function render()
     {
         return view('livewire.user.add-review');
@@ -24,6 +32,7 @@ class AddReview extends Component
 
     public function submit()
     {
+        $this->validate();
         $rating = WisataRating::create([
             'wisata_id' => $this->wisata,
             'user_id' => Auth::user()->id,
@@ -39,7 +48,7 @@ class AddReview extends Component
             'icon' => 'success',
             'iconColor' => 'green'
         ]);
-        $this->dispatchBrowserEvent('reviewAdded');
+        $this->emit('reviewAdded');
     }
 
     public function setStar($star)
