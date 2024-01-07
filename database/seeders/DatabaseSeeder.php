@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\WisataRating;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -27,6 +25,5 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'is_admin' => true,
         ]);
-        WisataRating::factory(500)->create();
     }
 }
