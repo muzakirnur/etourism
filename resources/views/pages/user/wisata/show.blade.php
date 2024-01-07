@@ -131,7 +131,33 @@
                 var lat = {{ $wisata->lat }};
                 var lng = {{ $wisata->lng }};
                 const location = {lat:lat, lng:lng};
-                let map;
+                let map, infoWindow;
+
+                function createCenterControl(map) {
+                const controlButton = document.createElement("button");
+
+                // Set CSS for the control.
+                controlButton.style.backgroundColor = "#fff";
+                controlButton.style.border = "2px solid #fff";
+                controlButton.style.borderRadius = "3px";
+                controlButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+                controlButton.style.color = "rgb(25,25,25)";
+                controlButton.style.cursor = "pointer";
+                controlButton.style.fontFamily = "Roboto,Arial,sans-serif";
+                controlButton.style.fontSize = "16px";
+                controlButton.style.lineHeight = "38px";
+                controlButton.style.margin = "8px 0 22px";
+                controlButton.style.padding = "0 5px";
+                controlButton.style.textAlign = "center";
+                controlButton.textContent = "Center Map";
+                controlButton.title = "Click to recenter the map";
+                controlButton.type = "button";
+                // Setup the click event listeners: simply set the map to Chicago.
+                controlButton.addEventListener("click", () => {
+                    map.setCenter(chicago);
+                });
+                return controlButton;
+                }
 
                 async function initMap() {
                     // The location of Uluru
@@ -140,23 +166,58 @@
                     //@ts-ignore
                     const { Map } = await google.maps.importLibrary("maps");
                     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
+                    infoWindow = new google.maps.InfoWindow();
+                    
                     // The map, centered at Uluru
                     map = new Map(document.getElementById("map"), {
                         zoom: 15,
                         center: location,
                         mapId: "user",
                     });
+                    const locationButton = createCenterControl(map);
 
                     const marker = new AdvancedMarkerElement({
                         map:map,
                         position:location,
-                        title:"{{ $wisata->nama }}"
+                        title:"{{ $wisata->nama }}",
                     })
 
-                    const infowindow = new google.maps.InfoWindow({
-                        ariaLabel: "{{ $wisata->nama }}",
-                    });
+                    locationButton.textContent = "Menuju Lokasi";
+                    locationButton.classList.add("custom-map-control-button");
+                    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+                    locationButton.addEventListener("click", () => {
+                        if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            (position) => {
+                                const pos = {
+                                    lat: position.coords.latitude,
+                                    lng: position.coords.longitude,
+                                };
+
+                                infoWindow.setPosition(pos);
+                                infoWindow.setContent("Location found.");
+                                infoWindow.open(map);
+                                map.setCenter(pos);
+                            },
+                            () => {
+                                handleLocationError(true, infoWindow, map.getCenter());
+                            },
+                        );
+                        } else {
+                            // Browser doesn't support Geolocation
+                            handleLocationError(false, infoWindow, map.getCenter());
+                        }
+                    })
+
+                    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent(
+                        browserHasGeolocation
+                        ? "Error: The Geolocation service failed."
+                        : "Error: Your browser doesn't support geolocation.",
+                    );
+                    infoWindow.open(map);
+                    }
                 }
                 initMap();
 
