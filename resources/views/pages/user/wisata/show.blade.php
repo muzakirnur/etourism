@@ -130,55 +130,57 @@
             document.addEventListener('DOMContentLoaded', function(){
                 var lat = {{ $wisata->lat }};
                 var lng = {{ $wisata->lng }};
-                const location = {lat:lat, lng:lng};
+                const lokasiWisata = {lat:lat, lng:lng};
                 let map, infoWindow;
 
                 function createCenterControl(map) {
-                const controlButton = document.createElement("button");
+                    const controlButton = document.createElement("button");
 
-                // Set CSS for the control.
-                controlButton.style.backgroundColor = "#fff";
-                controlButton.style.border = "2px solid #fff";
-                controlButton.style.borderRadius = "3px";
-                controlButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
-                controlButton.style.color = "rgb(25,25,25)";
-                controlButton.style.cursor = "pointer";
-                controlButton.style.fontFamily = "Roboto,Arial,sans-serif";
-                controlButton.style.fontSize = "16px";
-                controlButton.style.lineHeight = "38px";
-                controlButton.style.margin = "8px 0 22px";
-                controlButton.style.padding = "0 5px";
-                controlButton.style.textAlign = "center";
-                controlButton.textContent = "Center Map";
-                controlButton.title = "Click to recenter the map";
-                controlButton.type = "button";
-                // Setup the click event listeners: simply set the map to Chicago.
-                controlButton.addEventListener("click", () => {
-                    map.setCenter(chicago);
-                });
+                    // Set CSS for the control.
+                    controlButton.style.backgroundColor = "#fff";
+                    controlButton.style.border = "2px solid #fff";
+                    controlButton.style.borderRadius = "3px";
+                    controlButton.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+                    controlButton.style.color = "rgb(25,25,25)";
+                    controlButton.style.cursor = "pointer";
+                    controlButton.style.fontFamily = "Roboto,Arial,sans-serif";
+                    controlButton.style.fontSize = "16px";
+                    controlButton.style.lineHeight = "38px";
+                    controlButton.style.margin = "8px 0 22px";
+                    controlButton.style.padding = "0 5px";
+                    controlButton.style.textAlign = "center";
+                    controlButton.textContent = "Center Map";
+                    controlButton.title = "Click to recenter the map";
+                    controlButton.type = "button";
+                    // Setup the click event listeners: simply set the map to Chicago.
+                    controlButton.addEventListener("click", () => {
+                        map.setCenter(lokasiWisata);
+                    });
                 return controlButton;
                 }
 
                 async function initMap() {
-                    // The location of Uluru
+                    // The location of Bireun
                     const position = { lat: 5.221809197503294, lng: 96.71791035533619 };
                     // Request needed libraries.
                     //@ts-ignore
                     const { Map } = await google.maps.importLibrary("maps");
                     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
                     infoWindow = new google.maps.InfoWindow();
+                    var directionsService = new google.maps.DirectionsService();
+                    var directionsRenderer = new google.maps.DirectionsRenderer();
                     
                     // The map, centered at Uluru
                     map = new Map(document.getElementById("map"), {
                         zoom: 15,
-                        center: location,
+                        center: lokasiWisata,
                         mapId: "user",
                     });
                     const locationButton = createCenterControl(map);
 
                     const marker = new AdvancedMarkerElement({
                         map:map,
-                        position:location,
+                        position:lokasiWisata,
                         title:"{{ $wisata->nama }}",
                     })
 
@@ -194,8 +196,21 @@
                                     lng: position.coords.longitude,
                                 };
 
+                                var request = {
+                                    origin: pos,
+                                    destination: lokasiWisata,
+                                    travelMode: 'DRIVING'
+                                };
+                                directionsService.route(request, function(result, status) {
+                                    if (status == 'OK') {
+                                    directionsRenderer.setDirections(result);
+                                    }
+                                });
+                                directionsRenderer.setMap(map);
+
+
                                 infoWindow.setPosition(pos);
-                                infoWindow.setContent("Location found.");
+                                infoWindow.setContent("Lokasi Anda");
                                 infoWindow.open(map);
                                 map.setCenter(pos);
                             },
