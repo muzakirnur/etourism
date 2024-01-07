@@ -17,7 +17,7 @@ class WisataRatingFactory extends Factory
     public function definition()
     {
         return [
-            'wisata_id' => fake()->randomElement([1, 2, 3, 4, 5]),
+            'wisata_id' => fake()->randomElement([1, 3, 4, 5, 6]),
             'user_id' => fake()->numberBetween(1,1000),
             'bintang' => fake()->numberBetween(1,5),
             'tanggal' => fake()->date(),
