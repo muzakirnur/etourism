@@ -168,7 +168,7 @@
                     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
                     infoWindow = new google.maps.InfoWindow();
                     var directionsService = new google.maps.DirectionsService();
-                    var directionsRenderer = new google.maps.DirectionsRenderer();
+                    // var directionsRenderer = new google.maps.DirectionsRenderer();
                     
                     // The map, centered at Uluru
                     map = new Map(document.getElementById("map"), {
@@ -204,14 +204,55 @@
                                 var request = {
                                     origin: pos,
                                     destination: lokasiWisata,
+                                    provideRouteAlternatives:true,
                                     travelMode: 'DRIVING'
                                 };
+                                /* Distance Matrix */
+                                var service = new google.maps.DistanceMatrixService();
                                 directionsService.route(request, function(result, status) {
                                     if (status == 'OK') {
-                                    directionsRenderer.setDirections(result);
+
+                                    var routesSteps = [];
+                                    var routes = result.routes;
+                                    var colors = ['blue', 'green', 'red', 'orange', 'yellow', 'black'];
+
+                                    for(var i=0;i<routes.length; i++){
+                                        new google.maps.DirectionsRenderer({
+                                            map:map,
+                                            directions:result,
+                                            routesIndex:i,
+                                            polylineOptions: {
+                                                strokeColor: colors[i],
+                                                strokeWeight:4,
+                                                strokeOpacity:.3
+                                            }
+                                        });
+
+                                        var steps = routes[i].legs[0].steps;
+                                        var stepsCoords = [];
+
+                                        for (var j=0;j<steps.length;j++){
+                                            stepsCoords[j] = new google.maps.LatLng(steps[j].start_location.lat(), steps[j].start_location.lng());
+                                            new google.maps.Marker({
+                                                position: stepsCoords[j],
+                                                map: map,
+                                                icon: {
+                                                    path: 'M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0',
+                                                    scale: .5,
+                                                    fillColor: colors[i],
+                                                    fillOpacity: .3,
+                                                    strokeWeight: 0
+                                                },
+                                                title: steps[j].maneuver
+                                            });
+                                        }
+
+                                        routesSteps[i] = stepsCoords;
+                                    }                                    
+                                    // directionsRenderer.setDirections(result);
                                     }
                                 });
-                                directionsRenderer.setMap(map);
+                                // directionsRenderer.setMap(map);
 
 
                                 infoWindow.setPosition(pos);
