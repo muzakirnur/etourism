@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Frontend\User;
 
+use App\Models\Hotel;
+use App\Models\User;
 use App\Models\Wisata;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -16,9 +18,12 @@ class Search extends Component
     public function render()
     {
         return view('livewire.frontend.user.search', [
-            'data' => Wisata::query()->when($this->cari, function($query, $cari){
+            'data' => Wisata::query()->withCount('rating')->when($this->cari, function($query, $cari){
                 return $query->where('nama', 'LIKE', '%'.$cari.'%');
-            })->latest()->paginate($this->paginate),
+            })->orderBy('rating_count', 'DESC')->paginate($this->paginate),
+            'hotel' => count(Hotel::all()),
+            'user' => count(User::all()->except('id', 1)),
+            'wisata' => count(Wisata::all()),
         ]);
     }
 }
