@@ -212,7 +212,7 @@
                                             new google.maps.Marker({
                                                 position: stepsCoords[j],
                                                 map: map,
-                                                label:[j].toString(),
+                                                label:[i+1].toString(),
                                                 title: steps[j].maneuver,
                                             });
                                         }

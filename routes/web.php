@@ -5,6 +5,7 @@ use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\HotelController;
 use App\Http\Controllers\User\UserController as UserUserController;
+use App\Http\Controllers\User\WisataController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -30,8 +31,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
 
     Route::get('home', [UserUserController::class, 'index'])->name('index');
-    Route::get('wisata', [UserController::class, 'wisataIndex'])->name('user.wisata.index');
-    Route::get('wisata/{id}', [UserController::class, 'wisataShow'])->name('user.wisata.show');
+    Route::get('wisata', [WisataController::class, 'index'])->name('user.wisata.index');
+    Route::get('wisata/{id}', [WisataController::class, 'show'])->name('user.wisata.show');
     Route::get('hotel', [HotelController::class, 'index'])->name('hotel.user.index');
     Route::get('hotel/{id}', [HotelController::class, 'show'])->name('hotel.user.show');
 
