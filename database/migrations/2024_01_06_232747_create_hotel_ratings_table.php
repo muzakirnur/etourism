@@ -16,7 +16,11 @@ return new class extends Migration
         Schema::create('hotel_ratings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('hotel_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->integer('bintang');
+            $table->date('tanggal');
+            $table->text('ulasan');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

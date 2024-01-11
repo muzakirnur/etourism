@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\WisataRating>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\HotelRating>
  */
-class WisataRatingFactory extends Factory
+class HotelRatingFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,12 +17,11 @@ class WisataRatingFactory extends Factory
     public function definition()
     {
         return [
-            'wisata_id' => fake()->randomElement([2, 6, 3, 4, 5]),
+            'hotel_id' => fake()->randomElement([1, 2, 3, 4, 5]),
             'user_id' => fake()->numberBetween(1,1000),
             'bintang' => fake()->numberBetween(1,5),
             'tanggal' => fake()->date(),
             'ulasan' => fake()->text(),
-            'jenis_kunjungan' => fake()->randomElement(["Sendiri", "Bersama Pasangan", "Bersama Keluarga", "Bersama Kelompok"]),
         ];
     }
 }

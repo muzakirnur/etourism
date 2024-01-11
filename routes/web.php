@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\User\HotelController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -32,6 +33,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     })->name('index');
 
     Route::get('wisata/{id}', [UserController::class, 'wisataShow'])->name('user.wisata.show');
+    Route::get('hotel', [HotelController::class, 'index'])->name('hotel.user.index');
+    Route::get('hotel/{id}', [HotelController::class, 'show'])->name('hotel.user.show');
 
     Route::middleware('admin')->prefix('admin')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

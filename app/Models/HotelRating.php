@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class HotelRating extends Model
 {
     use HasFactory;
+
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

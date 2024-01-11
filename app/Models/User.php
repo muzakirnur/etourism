@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(WisataRating::class);
     }
+
+    public function hotelRating()
+    {
+        return $this->hasMany(HotelRating::class);
+    }
 }

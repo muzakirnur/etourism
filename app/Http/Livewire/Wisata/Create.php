@@ -21,7 +21,7 @@ class Create extends Component
         'nama' => ['required', 'string', 'max:255'],
         'kategori' => ['required'],
         'deskripsi' => ['required'],
-        'photos.*' => ['mimes:jpg,png,jpeg'],
+        'photos.*' => ['mimes:jpg,png,jpeg', 'required'],
         'lat' => ['required'],
         'lng' => ['required']
     ];
