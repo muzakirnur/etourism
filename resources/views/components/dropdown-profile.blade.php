@@ -2,7 +2,7 @@
     'align' => 'right'
 ])
 
-<div class="relative inline-flex" x-data="{ open: false }">
+<div class="relative z-30 inline-flex" x-data="{ open: false }">
     <button
         class="inline-flex justify-center items-center group"
         aria-haspopup="true"

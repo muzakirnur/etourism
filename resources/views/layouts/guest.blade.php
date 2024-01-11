@@ -38,10 +38,9 @@
                 <div class="min-h-screen h-full">
 
                     <!-- Header -->
-                    <div class="bg-indigo-100">
-                        <div class="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
+                    {{-- <div class="bg-indigo-100"> --}}
                             <!-- Logo -->
-                            <a class="block" href="{{ route('dashboard') }}">
+                            {{-- <a class="block" href="{{ route('dashboard') }}">
                                 <svg width="32" height="32" viewBox="0 0 32 32">
                                     <defs>
                                         <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">
@@ -70,9 +69,9 @@
                                     @else
                                     <a href="{{ route('login') }}" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Login</a>
                                 @endauth
-                            </div>
-                        </div>
-                    </div>
+                            </div> --}}
+                            @include('layouts.header')
+                    {{-- </div> --}}
 
                     <div class="w-full mx-auto px-4 py-8">
                         {{ $slot }}

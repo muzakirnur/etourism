@@ -35,17 +35,8 @@
 
                         <!-- Header -->
                         <div class="flex-1">
-                            <div class="flex bg-indigo-100 items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
                                 <!-- Logo -->
-                                <a class="block font-semibold" href="{{ route('dashboard') }}">
-                                    {{ config('app.name') }}
-                                </a>
-                                <div class="flex flex-wrap justify-evenly">
-                                    <a href="/" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Home</a>
-                                    <a href="{{ route('contact') }}" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Contact</a>
-                                    <a href="{{ route('login') }}" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Login</a>
-                                </div>
-                            </div>
+                                @include('layouts.header')
                         </div>
 
                         <div class="w-full max-w-sm mx-auto px-4 py-8">
