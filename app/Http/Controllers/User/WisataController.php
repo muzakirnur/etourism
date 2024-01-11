@@ -13,10 +13,7 @@ class WisataController extends Controller
 {
     public function index()
     {
-        $wisata = count(Wisata::all());
-        $user = count(User::all());
-        $hotel = count(Hotel::all());
-        return view('pages.user.index', compact('wisata', 'user', 'hotel'));
+        return view('pages.user.wisata.index');
     }
     
     public function show($id)
