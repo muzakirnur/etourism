@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hotel;
 use App\Models\User;
 use App\Models\Wisata;
 use Illuminate\Http\Request;
@@ -11,13 +12,6 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('pages.dashboard.user.index');
-    }
-
-    public function wisataShow($id)
-    {
-        $id = Crypt::decrypt($id);
-        $wisata = Wisata::findOrFail($id);
-        return view('pages.user.wisata.show', compact('wisata'));
+        return view('pages.dashboard.user.index', compact('wisata', 'user', 'hotel'));
     }
 }

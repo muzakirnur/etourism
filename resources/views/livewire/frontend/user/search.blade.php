@@ -5,22 +5,6 @@
             <input class="form-input w-full" type="text" id="searc" wire:model='cari' placeholder="Cari...">
         </div>
     </div>
-    <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
-        <dl class="grid max-w-screen-md gap-8 mx-auto text-gray-900 sm:grid-cols-3 dark:text-white">
-            <div class="flex flex-col items-center justify-center">
-                <dt class="mb-2 text-3xl md:text-4xl font-extrabold">{{ $wisata }}</dt>
-                <dd class="font-light text-gray-500 dark:text-gray-400">Wisata</dd>
-            </div>
-            <div class="flex flex-col items-center justify-center">
-                <dt class="mb-2 text-3xl md:text-4xl font-extrabold">{{ $hotel }}</dt>
-                <dd class="font-light text-gray-500 dark:text-gray-400">Hotel</dd>
-            </div>
-            <div class="flex flex-col items-center justify-center">
-                <dt class="mb-2 text-3xl md:text-4xl font-extrabold">{{ $user }}</dt>
-                <dd class="font-light text-gray-500 dark:text-gray-400">Pengguna</dd>
-            </div>
-        </dl>
-    </div>
     <div class="w-full p-4 mb-4">
         <h2 class="font-extrabold text-2xl text-center mb-8">Rekomendasi Objek Wisata</h2>
         <div class="w-full md:grid md:grid-cols-4 md:gap-4 mb-4">
