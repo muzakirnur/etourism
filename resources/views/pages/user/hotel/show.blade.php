@@ -229,12 +229,12 @@
                                         distanceDiv.append(divCols)
                                         for(var p=0;p<distances[i].length;p++){
                                             let li = document.createElement("span");
-                                            li.textContent=distances[i][p]+"M "
+                                            li.textContent=(distances[i][p]/1000).toFixed(2)+"Km "
                                             divCols.append(li);
                                             totalDistances = totalDistances+distances[i][p];
                                         }
                                         let TotalText = document.createElement('span');
-                                        TotalText.textContent="= "+totalDistances+"M"
+                                        TotalText.textContent="= "+(totalDistances/1000).toFixed(2)+"Km"
                                         divCols.append(TotalText);
                                     }
                                 }
