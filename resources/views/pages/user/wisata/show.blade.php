@@ -37,7 +37,10 @@
         </div>
         <div class="w-full lg:w-3/4 mx-auto mb-8">
             <div id="map" style="width: 100%; height: 600px;padding:0.5rem;"></div>
+            <div id="distances" class="grid grid-rows-3">
+            </div>
         </div>
+        @if (count($wisata->rating) > 0)
         <div class="w-full lg:w-3/4 mx-auto mb-4">
             <div class="flex items-center justify-center">
                 @for ($i = 1; $i < 6; $i++)
@@ -125,6 +128,7 @@
                 <livewire:user.add-review :wisata="$wisata->id"/>
             @endif
         </div>
+        @endif
         @push('scripts')
         <script>
             document.addEventListener('DOMContentLoaded', function(){
@@ -169,6 +173,7 @@
                     infoWindow = new google.maps.InfoWindow();
                     var directionsService = new google.maps.DirectionsService();
                     var directionsRenderer = new google.maps.DirectionsRenderer();
+                    let distanceDiv = document.getElementById('distances');
                     
                     // The map, centered at Uluru
                     map = new Map(document.getElementById("map"), {
@@ -197,10 +202,10 @@
                         navigator.geolocation.getCurrentPosition(
                             (position) => {
                                 const pos = {
-                                    lat: position.coords.latitude,
-                                    lng: position.coords.longitude,
-                                    // lat:5.1934632878968,
-                                    // lng:97.13799595273,
+                                    // lat: position.coords.latitude,
+                                    // lng: position.coords.longitude,
+                                    lat:5.1934632878968,
+                                    lng:97.13799595273,
                                 };
 
                                 var request = {
@@ -214,7 +219,7 @@
                                 directionsService.route(request, function(result, status) {
                                     if (status == 'OK') {
                                         var routesSteps = [];
-                                        var polyline = [];
+                                        var distances = [];
                                         var routes = result.routes;
                                         var colors = ['blue', 'red', 'green', 'orange', 'yellow', 'black'];
                                         var stroke = ['#F6D8AE', '#F4D35E'];
@@ -232,28 +237,39 @@
                                             
                                             var steps = routes[i].legs[0].steps;
                                             var stepsCoords = [];
-                                            var path = [];
+                                            var distance = [];
                                             for (var j=0;j<steps.length;j++){
                                                 stepsCoords[j] = new google.maps.LatLng(steps[j].start_location.lat(), steps[j].start_location.lng());
-                                                path.push({
-                                                    lat:steps[j].start_location.lat(), lng:steps[j].start_location.lng()
-                                                });
                                                 new google.maps.Marker({
                                                     position: stepsCoords[j],
                                                     map: map,
-                                                    label:[i+1].toString(),
+                                                    label:[j].toString(),
                                                     title: steps[j].maneuver,
                                                 });
-                                                
                                             }
-                                            
+                                            for(var d=0;d<steps.length;d++){
+                                               distance[d] = steps[d].distance.value;
+                                            }
+                                            distances[i] = distance;
                                             routesSteps[i] = stepsCoords;
+                                            let divCols = document.createElement("div");
+                                            let h2Text = document.createElement("h2");
+                                            var totalDistances = 0;
+                                            h2Text.textContent="Jalur "+[i+1]
+                                            divCols.append(h2Text);
+                                            distanceDiv.append(divCols)
+                                            for(var p=0;p<distances[i].length;p++){
+                                                let li = document.createElement("span");
+                                                li.textContent=distances[i][p]+"M "
+                                                divCols.append(li);
+                                                totalDistances = totalDistances+distances[i][p];
+                                            }
+                                            let TotalText = document.createElement('span');
+                                            TotalText.textContent="= "+totalDistances+"M"
+                                            divCols.append(TotalText);
                                         }
-                                    // directionsRenderer.setDirections(result);
                                     }
                                 });
-                                // directionsRenderer.setMap(map);
-
 
                                 infoWindow.setPosition(pos);
                                 infoWindow.setContent("Lokasi Anda");
