@@ -1,4 +1,4 @@
-<header>
+<header class="shadow-sm">
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="https://flowbite.com" class="flex items-center">
@@ -27,6 +27,9 @@
                     </li>
                     <li>
                         <a href="{{ route('hotel.user.index') }}" class="block py-2 pr-4 pl-3 {{ Request::routeIs('hotel.user.*') ? 'text-white bg-indigo-500 lg:text-indigo-500' : 'text-gray-700' }} hover:text-indigo-500 rounded lg:bg-transparent lg:p-0 dark:text-white">Hotel</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('contact') }}" class="block py-2 pr-4 pl-3 {{ Request::routeIs('contact') ? 'text-white bg-indigo-500 lg:text-indigo-500' : 'text-gray-700' }} hover:text-indigo-500 rounded lg:bg-transparent lg:p-0 dark:text-white">Contact</a>
                     </li>
                 </ul>
             </div>
