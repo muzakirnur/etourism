@@ -24,6 +24,15 @@ Route::redirect('/', 'login');
 Route::get('contact', function(){
     return view('pages.user.contact.index');
 })->name('contact');
+Route::get('tentang/sejarah', function(){
+    return view('pages.user.profile.sejarah');
+})->name('tentang.sejarah');
+Route::get('tentang/visi-misi', function(){
+    return view('pages.user.profile.visi-misi');
+})->name('tentang.visi-misi');
+Route::get('tentang/struktur', function(){
+    return view('pages.user.profile.struktur');
+})->name('tentang.struktur');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
