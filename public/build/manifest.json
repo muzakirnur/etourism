@@ -1,6 +1,10 @@
 {
+  "public/images/bg.jpg": {
+    "file": "assets/bg-0eb1e8b2.jpg",
+    "src": "public/images/bg.jpg"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-c975478d.css",
+    "file": "assets/app-2d67c18a.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
