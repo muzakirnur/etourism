@@ -1,6 +1,6 @@
 <div class="w-full">
     <div class="max-w-3xl mx-auto">
-        <h2 class="text-center text-xl">Cari Objek Wisata</h2>
+        <h2 class="font-extrabold text-2xl text-center mb-4">Rekomendasi Objek Wisata</h2>
         <div class="flex justify-center p-2 mx-auto">
             <div class="w-1/2 md:w-3/4 p-2">
                 <input class="form-input w-full" type="text" id="searc" wire:model='cari' placeholder="Cari...">
@@ -17,7 +17,6 @@
         </div>
     </div>
     <div class="w-full p-4 mb-4">
-        <h2 class="font-extrabold text-2xl text-center mb-8">Rekomendasi Objek Wisata</h2>
         <div class="w-full md:grid md:grid-cols-4 md:gap-4 mb-4">
             @foreach ($data as $row)
             <a href="{{ route('user.wisata.show', Crypt::encrypt($row->id)) }}" class="relative">
