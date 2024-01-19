@@ -58,7 +58,7 @@
                             >
                                 <ul>
                                     <li>
-                                        <a class="font-medium text-sm text-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3" href="{{ route('tentang.sejarah') }}" @click="open = false" @focus="open = true" @focusout="open = false">Sejarah Lembaga</a>
+                                        <a class="font-medium text-sm text-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3" href="{{ route('tentang.sejarah') }}" @click="open = false" @focus="open = true" @focusout="open = false">Sejarah</a>
                                     </li>
                                     <li>
                                         <a class="font-medium text-sm text-gray-700 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center py-1 px-3" href="{{ route('tentang.visi-misi') }}" @click="open = false" @focus="open = true" @focusout="open = false">Visi & Misi</a>
