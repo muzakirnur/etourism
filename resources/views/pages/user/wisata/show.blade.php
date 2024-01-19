@@ -228,7 +228,8 @@
                                             distanceDiv.append(divCols)
                                             for(var p=0;p<distances[i].length;p++){
                                                 let li = document.createElement("span");
-                                                li.textContent=(distances[i][p]/1000).toFixed(2)+"Km "
+                                                let km = (p==distances[i].length-1) ? "Km " : "Km + ";
+                                                li.textContent=(distances[i][p]/1000).toFixed(2)+km
                                                 divCols.append(li);
                                                 totalDistances = totalDistances+distances[i][p];
                                             }
