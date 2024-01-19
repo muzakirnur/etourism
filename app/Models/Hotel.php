@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class Hotel extends Model
 {
@@ -28,5 +29,10 @@ class Hotel extends Model
         $sumStar = $rating->sum('bintang');
         $finalStar = $sumStar/count($rating);
         return number_format($finalStar, 2, '.', ' ');
+    }
+
+    public function shortDesc()
+    {
+        return Str::limit(strip_tags($this->deskripsi), 300);
     }
 }
