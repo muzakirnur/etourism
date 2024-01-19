@@ -2,7 +2,18 @@
     <div class="max-w-3xl mx-auto">
         <h2 class="text-center text-xl">Cari Objek Wisata</h2>
         <div class="flex justify-center p-2">
-            <input class="form-input w-full" type="text" id="searc" wire:model='cari' placeholder="Cari...">
+            <div class="w-3/4 p-2">
+                <input class="form-input w-full" type="text" id="searc" wire:model='cari' placeholder="Cari...">
+            </div>
+            <div class="w-1/4/2 p-2">
+                <select class="form-select" wire:model='kategori'>
+                    <option value="">Pilih Kategori</option>
+                    <option value="Religi">Religi</option>
+                    <option value="Alam">Alam</option>
+                    <option value="Budaya">Budaya</option>
+                    <option value="Kuliner">Kuliner</option>
+                </select>
+            </div>
         </div>
     </div>
     <div class="w-full p-4 mb-4">

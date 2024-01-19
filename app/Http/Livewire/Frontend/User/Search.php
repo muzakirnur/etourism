@@ -12,7 +12,7 @@ class Search extends Component
 {
     use WithPagination;
     public $cari;
-    public $tipe;
+    public $kategori;
     public $paginate=12;
 
     public function render()
@@ -20,6 +20,8 @@ class Search extends Component
         return view('livewire.frontend.user.search', [
             'data' => Wisata::query()->withCount('rating')->when($this->cari, function($query, $cari){
                 return $query->where('nama', 'LIKE', '%'.$cari.'%');
+            })->when($this->kategori, function($query, $kategori){
+                return $query->where('kategori', $kategori);
             })->orderBy('rating_count', 'DESC')->paginate($this->paginate),
             'hotel' => count(Hotel::all()),
             'user' => count(User::all()->except('id', 1)),
