@@ -156,6 +156,7 @@
                     },
                 });
                 const locationButton = createCenterControl(map);
+                const startButton = createCenterControl(map);
 
                 const marker = new AdvancedMarkerElement({
                     map:map,
@@ -168,6 +169,10 @@
                 map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
                 locationButton.addEventListener("click", () => {
                     if (navigator.geolocation) {
+                    startButton.textContent = "Mulai Perjalanan";
+                    startButton.classList.add("custom-map-control-button");
+                    startButton.title = "Mulai Perjalanan";
+                    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(startButton);
                     navigator.geolocation.getCurrentPosition(
                         (position) => {
                             const pos = {
@@ -245,6 +250,10 @@
                             infoWindow.setContent("Lokasi Anda");
                             infoWindow.open(map);
                             map.setCenter(pos);
+                            var url = "https://www.google.com/maps/dir/?api=1&origin="+pos.lat+","+pos.lng+"&destination="+lokasiWisata.lat+","+lokasiWisata.lng;
+                                startButton.addEventListener('click', () => {
+                                    window.open(url, "_blank");
+                                })
                         },
                         () => {
                             handleLocationError(true, infoWindow, map.getCenter());
