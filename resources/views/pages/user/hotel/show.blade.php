@@ -37,6 +37,7 @@
         {!! $hotel->deskripsi !!}
     </div>
     <div class="w-full lg:w-3/4 mx-auto mb-8">
+        <h1 class="font-semibold text-center">Rute Lokasi</h1>
         <div id="map" style="width: 100%; height: 600px;padding:0.5rem;"></div>
         <div id="distances" class="grid grid-rows-3">
         </div>
@@ -164,12 +165,12 @@
                     title:"TES TITLE",
                 })
 
-                locationButton.textContent = "Menuju Lokasi";
+                locationButton.textContent = "Menentukan Rute";
                 locationButton.classList.add("custom-map-control-button");
                 map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
                 locationButton.addEventListener("click", () => {
                     if (navigator.geolocation) {
-                    startButton.textContent = "Mulai Perjalanan";
+                    startButton.textContent = "Menuju Lokasi";
                     startButton.classList.add("custom-map-control-button");
                     startButton.title = "Mulai Perjalanan";
                     map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(startButton);
