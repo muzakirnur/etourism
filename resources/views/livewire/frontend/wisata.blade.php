@@ -8,7 +8,7 @@
                 <div class="opacity-100 md:hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-center text-lg md:text-2xl lg:text-4xl text-white font-semibold">{{ $row->nama }}</div>
             </div>
         </a> --}}
-        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4">
             <a href="{{ route('user.wisata.show', Crypt::encrypt($row->id)) }}">
                 <img class="rounded-t-lg" src="{{ asset('storage/'.$row->pictures->first()->path) }}" alt="{{ $row->nama }}" />
             </a>
