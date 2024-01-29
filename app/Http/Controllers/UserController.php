@@ -12,6 +12,6 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('pages.dashboard.user.index', compact('wisata', 'user', 'hotel'));
+        return view('pages.dashboard.user.index');
     }
 }
