@@ -89,7 +89,7 @@
                                     <path class="fill-current @if(in_array(Request::segment(2), ['hotel'])){{ 'text-primary' }}@else{{ 'text-slate-600' }}@endif" d="M19 5h1v14h-2V7.414L5.707 19.707 5 19H4V5h2v11.586L18.293 4.293 19 5Z" />
                                     <path class="fill-current @if(in_array(Request::segment(2), ['hotel'])){{ 'text-secondary' }}@else{{ 'text-slate-400' }}@endif" d="M5 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8ZM5 23a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm14 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z" />
                                 </svg>
-                                <span class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Hotel</span>
+                                <span class="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">Akomodasi</span>
                             </div>
                         </a>
                     </li>

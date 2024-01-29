@@ -26,7 +26,7 @@
                         <a href="{{ route('user.wisata.index') }}" class="block py-2 pr-4 pl-3 {{ Request::routeIs('user.wisata.*') ? 'text-white bg-indigo-500 lg:text-indigo-500' : 'text-gray-700' }} hover:text-indigo-500 rounded lg:bg-transparent lg:p-0 dark:text-white">Wisata</a>
                     </li>
                     <li>
-                        <a href="{{ route('hotel.user.index') }}" class="block py-2 pr-4 pl-3 {{ Request::routeIs('hotel.user.*') ? 'text-white bg-indigo-500 lg:text-indigo-500' : 'text-gray-700' }} hover:text-indigo-500 rounded lg:bg-transparent lg:p-0 dark:text-white">Hotel</a>
+                        <a href="{{ route('hotel.user.index') }}" class="block py-2 pr-4 pl-3 {{ Request::routeIs('hotel.user.*') ? 'text-white bg-indigo-500 lg:text-indigo-500' : 'text-gray-700' }} hover:text-indigo-500 rounded lg:bg-transparent lg:p-0 dark:text-white">Akomodasi</a>
                     </li>
                     <li>
                         <div class="relative z-30 inline-flex" x-data="{ open: false }">

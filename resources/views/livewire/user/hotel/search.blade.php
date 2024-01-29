@@ -1,6 +1,6 @@
 <div class="w-full">
     <div class="max-w-3xl mx-auto">
-        <h2 class="font-extrabold text-2xl text-center mb-4">Rekomendasi Hotel Terbaik</h2>
+        <h2 class="font-extrabold text-2xl text-center mb-4">Rekomendasi Akomodasi Terbaik</h2>
         <div class="flex justify-center p-2">
             <input class="form-input w-full" type="text" id="searc" wire:model='cari' placeholder="Cari...">
         </div>
