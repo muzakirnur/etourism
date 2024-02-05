@@ -11,7 +11,7 @@
                     file:text-sm file:font-semibold
                     file:bg-indigo-50 file:text-indigo-700
                     hover:file:bg-indigo-100
-                " multiple/>
+                " multiple required/>
                 </label>
                 @error('photos.*')
                 <span class="error text-red-500">
