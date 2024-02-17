@@ -5,7 +5,10 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Http;
     use App\Models\DataFeed;
-    use Carbon\Carbon;
+use App\Models\Hotel;
+use App\Models\User;
+use App\Models\Wisata;
+use Carbon\Carbon;
 
     class DashboardController extends Controller
     {
@@ -18,7 +21,9 @@
         public function index()
         {
             $dataFeed = new DataFeed();
-
-            return view('pages/dashboard/dashboard', compact('dataFeed'));
+            $users = User::count();
+            $hotel = Hotel::count();
+            $wisata = Wisata::count();
+            return view('pages/dashboard/dashboard', compact('dataFeed', 'users', 'hotel', 'wisata'));
         }
     }
