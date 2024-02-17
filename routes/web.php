@@ -7,6 +7,7 @@ use App\Http\Controllers\User\HotelController;
 use App\Http\Controllers\User\UserController as UserUserController;
 use App\Http\Controllers\User\WisataController;
 use App\Http\Controllers\UserController;
+use App\Models\Hotel;
 use App\Models\Wisata;
 
 /*
@@ -69,6 +70,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('hotel/create', function(){
             return view('pages.dashboard.hotel.create');
         })->name('hotel.create');
+        Route::get('hotel/edit/{hotel}', function(Hotel $hotel){
+            return view('pages.dashboard.hotel.edit', compact('hotel'));
+        })->name('hotel.edit');
     });
     Route::fallback(function() {
         return view('pages/utility/404');

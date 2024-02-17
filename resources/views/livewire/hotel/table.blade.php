@@ -48,6 +48,7 @@
                 </td>
                 <td class="p-2">
                     <div class="w-full text-end">
+                        <a href="{{route('hotel.edit', $row)}}" class="btn bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap">Edit</a>
                         <button class="btn bg-red-500 hover:bg-red-600 text-white whitespace-nowrap" wire:click='delete({{ $row->id }})'>Delete</button>
                     </div>
                 </td>
