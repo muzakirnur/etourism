@@ -11,6 +11,7 @@ class Create extends Component
 {
     use WithFileUploads;
     public $nama;
+    public $shortDesc;
     public $kategori;
     public $deskripsi;
     public $photos = [];
@@ -20,6 +21,7 @@ class Create extends Component
     protected $rules = [
         'nama' => ['required', 'string', 'max:255'],
         'kategori' => ['required'],
+        'shortDesc' => ['required'],
         'deskripsi' => ['required'],
         'photos.*' => ['mimes:jpg,png,jpeg', 'required'],
         'lat' => ['required'],
@@ -37,6 +39,7 @@ class Create extends Component
             $this->validate();
             $wisata = Wisata::create([
                 'nama' => $this->nama,
+                'short_desc' => $this->ShortDesc,
                 'deskripsi' => $this->deskripsi,
                 'kategori' => $this->kategori,
                 'lat' => $this->lat,
