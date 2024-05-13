@@ -42,6 +42,7 @@ class Create extends Component
             $hotel = Hotel::create([
                 'nama' => $this->nama,
                 'deskripsi' => $this->deskripsi,
+                'short_desc' => $this->shortDesc,
                 'alamat' => $this->alamat,
                 'lat' => $this->lat,
                 'lng' => $this->lng,

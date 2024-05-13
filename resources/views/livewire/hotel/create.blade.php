@@ -56,14 +56,24 @@
                 </span>
             @enderror
         </div>
-        <div class="p-2">
-            <x-jet-label for="maps" value="{{ __('Lokasi') }}" />
-            <div wire:ignore id="map" style="width: 100%; height: 400px;padding:0.5rem;"></div>
-            @error('lat')
-                <span class="error text-red-500">
-                    {{ $message }}
-                </span>
-            @enderror
+        <div wire:ignore>
+            <div class="pac-card" id="pac-card">
+                <div id="title">
+                    Cari Lokasi
+                </div>
+                <div id="pac-container">
+                    <input id="pac-input" type="text" placeholder="Cari...">
+                </div>
+            </div>
+            <div class="p-2">
+                <x-jet-label for="maps" value="{{ __('Lokasi') }}" />
+                <div wire:ignore id="map" style="width: 100%; height: 400px;padding:0.5rem;"></div>
+                @error('lat')
+                    <span class="error text-red-500">
+                        {{ $message }}
+                    </span>
+                @enderror
+            </div>
         </div>
         <div class="p-2 text-end">
             <button type="submit"
