@@ -23,7 +23,7 @@ class Create extends Component
         'kategori' => ['required'],
         'shortDesc' => ['required'],
         'deskripsi' => ['required'],
-        'photos.*' => ['mimes:jpg,png,jpeg', 'required'],
+        'photos.*' => ['image', 'required'],
         'lat' => ['required'],
         'lng' => ['required']
     ];
@@ -39,7 +39,7 @@ class Create extends Component
             $this->validate();
             $wisata = Wisata::create([
                 'nama' => $this->nama,
-                'short_desc' => $this->ShortDesc,
+                'short_desc' => $this->shortDesc,
                 'deskripsi' => $this->deskripsi,
                 'kategori' => $this->kategori,
                 'lat' => $this->lat,

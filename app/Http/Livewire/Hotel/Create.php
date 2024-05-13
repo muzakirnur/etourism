@@ -12,16 +12,18 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    public $photos=[];
+    public $photos = [];
     public $nama;
+    public $shortDesc;
     public $deskripsi;
     public $lat;
     public $lng;
     public $alamat;
 
     protected $rules = [
-        'photos.*' => ['required', 'mimes:jpg,jpeg,png'],
+        'photos.*' => ['image', 'required'],
         'nama' => ['required', 'string', 'max:255'],
+        'shortDesc' => ['required'],
         'deskripsi' => ['required'],
         'lat' => ['required'],
         'lng' => ['required'],
@@ -47,7 +49,7 @@ class Create extends Component
             for($i=0;$i<count($this->photos);$i++){
                 $pictures[$i] = HotelPicture::create([
                     'hotel_id' => $hotel->id,
-                    'path' => $this->photos[$i]->store('hotel/'.$hotel->nama, 'public')
+                    'path' => $this->photos[$i]->store('hotel/'.$hotel->id, 'public')
                 ]);
             }
             $this->dispatchBrowserEvent('messages', [
@@ -58,6 +60,7 @@ class Create extends Component
             $this->emit('wisataAdded');
             $this->reset();
         }catch(\Exception $e){
+            dd($e->getMessage());
             if(isset($hotel)){
                 if($hotel->pictures){
                     foreach($hotel->pictures as $picture){

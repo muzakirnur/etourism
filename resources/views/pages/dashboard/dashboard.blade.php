@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-        
+
         <!-- Welcome banner -->
         <x-dashboard.welcome-banner />
 
@@ -30,38 +30,43 @@
             </div> --}}
 
         </div>
-        
+
         <!-- Cards -->
         <div class="grid grid-cols-12 gap-6">
 
-            <div class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+            <div
+                class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                 <div class="px-5 pt-5 pb-5">
                     <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Users</h2>
                     <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Total</div>
                     <div class="flex items-start">
-                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{{$users}}</div>
+                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{{ $users }}</div>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+            <div
+                class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                 <div class="px-5 pt-5 pb-5">
                     <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Wisata</h2>
                     <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Total</div>
                     <div class="flex items-start">
-                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{{$hotel}}</div>
+                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{{ $wisata }}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+            <div
+                class="flex flex-col col-span-full sm:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
                 <div class="px-5 pt-5 pb-5">
-                    <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Hotel</h2>
+                    <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Akomodasi</h2>
                     <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Total</div>
                     <div class="flex items-start">
-                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{{$wisata}}</div>
+                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{{ $hotel }}
+                        </div>
                     </div>
                 </div>
             </div>
-            
+
 
             <!-- Line chart (Acme Plus) -->
             {{-- <x-dashboard.dashboard-card-01 :dataFeed="$dataFeed" /> --}}
@@ -98,7 +103,7 @@
 
             <!-- Card (Recent Activity) -->
             {{-- <x-dashboard.dashboard-card-12 /> --}}
-            
+
             <!-- Card (Income/Expenses) -->
             {{-- <x-dashboard.dashboard-card-13 /> --}}
 
