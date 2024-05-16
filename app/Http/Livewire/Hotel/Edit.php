@@ -13,6 +13,7 @@ class Edit extends Component
     public $hotel;
     public $photos=[];
     public $nama;
+    public $shortDesc;
     public $deskripsi;
     public $lat;
     public $lng;
@@ -21,6 +22,7 @@ class Edit extends Component
     public function mount()
     {
         $this->nama = $this->hotel->nama;
+        $this->shortDesc = $this->hotel->short_desc;
         $this->deskripsi = $this->hotel->deskripsi;
         $this->lat = $this->hotel->lat;
         $this->lng = $this->hotel->lng;
@@ -30,6 +32,7 @@ class Edit extends Component
     protected $rules = [
         'photos.*' => ['mimes:jpg,jpeg,png'],
         'nama' => ['required', 'string', 'max:255'],
+        'shortDesc' => ['required', 'string'],
         'deskripsi' => ['required'],
         'lat' => ['required'],
         'lng' => ['required'],
@@ -46,6 +49,7 @@ class Edit extends Component
             $this->validate();
             $this->hotel->update([
                 'nama' => $this->nama,
+                'short_desc' => $this->shortDesc,
                 'deskripsi' => $this->deskripsi,
                 'alamat' => $this->alamat,
                 'lat' => $this->lat,

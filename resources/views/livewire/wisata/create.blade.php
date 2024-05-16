@@ -79,10 +79,10 @@
                     </span>
                 @enderror
             </div>
-            <div class="p-2 text-end">
-                <button type="submit"
-                    class="btn bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap">Simpan</button>
-            </div>
+        </div>
+        <div class="p-2 text-end">
+            <button type="submit"
+                class="btn bg-indigo-500 hover:bg-indigo-600 text-white whitespace-nowrap">Simpan</button>
         </div>
     </form>
 </div>

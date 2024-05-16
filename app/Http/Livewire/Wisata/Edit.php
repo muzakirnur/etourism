@@ -12,6 +12,7 @@ class Edit extends Component
     use WithFileUploads;
     public $wisata;
     public $nama;
+    public $shortDesc;
     public $kategori;
     public $deskripsi;
     public $photos = [];
@@ -21,6 +22,7 @@ class Edit extends Component
     public function mount()
     {
         $this->nama = $this->wisata->nama;
+        $this->shortDesc = $this->wisata->short_desc;
         $this->deskripsi = $this->wisata->deskripsi;
         $this->lat = $this->wisata->lat;
         $this->lng = $this->wisata->lng;
@@ -29,6 +31,7 @@ class Edit extends Component
 
     protected $rules = [
         'nama' => ['required', 'string', 'max:255'],
+        'shortDesc' => ['required', 'string'],
         'kategori' => ['required'],
         'deskripsi' => ['required'],
         'photos.*' => ['mimes:jpg,png,jpeg'],
@@ -47,6 +50,7 @@ class Edit extends Component
             $this->validate();
             $this->wisata->update([
                 'nama' => $this->nama,
+                'short_desc' => $this->shortDesc,
                 'deskripsi' => $this->deskripsi,
                 'kategori' => $this->kategori,
                 'lat' => $this->lat,
