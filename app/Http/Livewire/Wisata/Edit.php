@@ -34,7 +34,7 @@ class Edit extends Component
         'shortDesc' => ['required', 'string'],
         'kategori' => ['required'],
         'deskripsi' => ['required'],
-        'photos.*' => ['mimes:jpg,png,jpeg'],
+        'photos.*' => ['image'],
         'lat' => ['required'],
         'lng' => ['required']
     ];

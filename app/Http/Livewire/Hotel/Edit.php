@@ -30,7 +30,7 @@ class Edit extends Component
     }
 
     protected $rules = [
-        'photos.*' => ['mimes:jpg,jpeg,png'],
+        'photos.*' => ['image'],
         'nama' => ['required', 'string', 'max:255'],
         'shortDesc' => ['required', 'string'],
         'deskripsi' => ['required'],
