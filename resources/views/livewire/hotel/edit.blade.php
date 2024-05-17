@@ -32,6 +32,11 @@
                 </span>
             @enderror
         </div>
+        <div class="p-2">
+            <x-jet-label for="shortDesc" value="{{ __('Short Description') }}" />
+            <textarea placeholder="Masukkan Deskripsi Singkat" class="form-input w-full" name="shortDesc" id="shortDesc"
+                cols="30" rows="3" wire:model='shortDesc'></textarea>
+        </div>
         <div class="p-2 h-max w-full mb-8" wire:ignore>
             <x-jet-label for="deskripsi" value="{{ __('Deskripsi') }}" />
             <textarea id="myeditorinstance" wire:model='deskripsi'></textarea>
