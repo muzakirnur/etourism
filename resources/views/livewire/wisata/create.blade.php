@@ -45,6 +45,7 @@
                 <option value="Religi">Religi</option>
                 <option value="Budaya">Budaya</option>
                 <option value="Kuliner">Kuliner</option>
+                <option value="Sejarah">Sejarah</option>
             </select>
             @error('kategori')
                 <span class="error text-red-500">

@@ -5,7 +5,7 @@
             <div
                 class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4">
                 <a href="{{ route('hotel.user.show', Crypt::encrypt($row->id)) }}">
-                    <img class="rounded-t-lg" src="{{ asset('storage/' . $row->pictures->first()->path) }}"
+                    <img class="rounded-t-lg" src="{{ asset('storage/' . $row->pictures->first()?->path) }}"
                         alt="{{ $row->nama }}" />
                 </a>
                 <div class="p-5">
