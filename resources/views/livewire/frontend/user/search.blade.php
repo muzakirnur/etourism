@@ -23,8 +23,8 @@
                 <div
                     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <a href="{{ route('user.wisata.show', Crypt::encrypt($row->id)) }}">
-                        <img class="rounded-t-lg" src="{{ asset('storage/' . $row->pictures->first()->path) }}"
-                            alt="{{ $row->nama }}" />
+                        <img class="rounded-t-lg h-1/2 object-cover w-full"
+                            src="{{ asset('storage/' . $row->pictures->first()->path) }}" alt="{{ $row->nama }}" />
                     </a>
                     <div class="p-5">
                         <a href="{{ route('user.wisata.show', Crypt::encrypt($row->id)) }}">
