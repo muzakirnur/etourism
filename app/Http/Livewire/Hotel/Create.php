@@ -61,7 +61,6 @@ class Create extends Component
             $this->emit('wisataAdded');
             $this->reset();
         }catch(\Exception $e){
-            dd($e->getMessage());
             if(isset($hotel)){
                 if($hotel->pictures){
                     foreach($hotel->pictures as $picture){
