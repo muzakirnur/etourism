@@ -102,7 +102,7 @@
                 @endif
             </figure>
         @else
-            <livewire:user.add-review :wisata="$hotel->id" />
+            <livewire:hotel.add-review :hotel="$hotel->id" />
         @endif
     </div>
     @if (count($hotel->rating) > 0)

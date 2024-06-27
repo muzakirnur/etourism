@@ -1,44 +1,40 @@
 <?php
 
-namespace App\Http\Livewire\User;
+namespace App\Http\Livewire\Hotel;
 
-use App\Models\WisataRating;
-use Illuminate\Support\Facades\Auth;
+use App\Models\HotelRating;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class AddReview extends Component
 {
     use WithFileUploads;
-    public $wisata;
+    public $hotel;
     public $date;
     public $ulasan;
     public $photo;
-    public $jenis;
     public $bintang;
 
     protected $rules = [
         'date' => ['required', 'date'],
         'ulasan' => ['required', 'string'],
         'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:1024'],
-        'jenis' => ['required'],
         'bintang' => ['required']
     ];
 
     public function render()
     {
-        return view('livewire.user.add-review');
+        return view('livewire.hotel.add-review');
     }
 
     public function submit()
     {
         $this->validate();
-        $rating = WisataRating::create([
-            'wisata_id' => $this->wisata,
+        $rating = HotelRating::create([
+            'hotel_id' => $this->hotel,
             'user_id' => auth()->id(),
             'bintang' => $this->bintang,
             'ulasan' => $this->ulasan,
-            'jenis_kunjungan' => $this->jenis,
             'tanggal' => $this->date,
             'gambar' => $this->photo != null ? $this->photo->store('ulasan/'.auth()->id(), 'public') : null,
         ]);
