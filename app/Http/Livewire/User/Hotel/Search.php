@@ -10,7 +10,7 @@ class Search extends Component
 {
     use WithPagination;
     public $cari;
-    public $paginate=10;
+    public $paginate=12;
 
     public function render()
     {
