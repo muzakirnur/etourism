@@ -34,6 +34,12 @@
                     <div class="font-semibold text-center">Kategori</div>
                 </th>
                 <th class="p-2">
+                    <div class="font-semibold text-center">Latitude</div>
+                </th>
+                <th class="p-2">
+                    <div class="font-semibold text-center">Longitude</div>
+                </th>
+                <th class="p-2">
                     <div class="font-semibold text-end">Action</div>
                 </th>
             </tr>
@@ -54,6 +60,12 @@
                     </td>
                     <td class="p-2">
                         <div class="text-center">{{ $row->kategori }}</div>
+                    </td>
+                    <td class="p-2">
+                        <div class="text-center">{{ $row->lat }}</div>
+                    </td>
+                    <td class="p-2">
+                        <div class="text-center">{{ $row->lng }}</div>
                     </td>
                     <td class="p-2">
                         <div class="w-full text-end">
