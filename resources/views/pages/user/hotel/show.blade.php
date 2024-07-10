@@ -216,8 +216,8 @@
                                     const pos = {
                                         lat: position.coords.latitude,
                                         lng: position.coords.longitude,
-                                        // lat:5.1934632878968,
-                                        // lng:97.13799595273,
+                                        // lat: 5.193380599999999,
+                                        // lng: 97.1380039,
                                     };
 
                                     var request = {
@@ -233,21 +233,23 @@
                                             var routesSteps = [];
                                             var distances = [];
                                             var routes = result.routes;
-                                            var colors = ['blue', 'red', 'green', 'orange',
+                                            var colors = ['red', 'blue', 'green', 'orange',
                                                 'yellow', 'black'
                                             ];
                                             var stroke = ['#F6D8AE', '#F4D35E'];
+                                            console.log(result);
                                             for (var i = 0; i < routes.length; i++) {
-                                                new google.maps.DirectionsRenderer({
-                                                    map: map,
-                                                    directions: result,
-                                                    routesIndex: i,
-                                                    polylineOptions: {
-                                                        strokeColor: colors[i],
-                                                        strokeWeight: 4,
-                                                        strokeOpacity: .3
-                                                    }
-                                                });
+                                                new google.maps
+                                                    .DirectionsRenderer({
+                                                        map: map,
+                                                        directions: result,
+                                                        routeIndex: i,
+                                                        polylineOptions: {
+                                                            strokeColor: colors[i],
+                                                            strokeWeight: 2,
+                                                            strokeOpacity: 1
+                                                        }
+                                                    });
 
                                                 var steps = routes[i].legs[0].steps;
                                                 var stepsCoords = [];
@@ -270,22 +272,30 @@
                                                 routesSteps[i] = stepsCoords;
                                                 let divCols = document.createElement("div");
                                                 let h2Text = document.createElement("h2");
+                                                let ul = document.createElement("ul");
                                                 var totalDistances = 0;
                                                 h2Text.textContent = "Jalur " + [i + 1]
                                                 divCols.append(h2Text);
                                                 distanceDiv.append(divCols)
                                                 for (var p = 0; p < distances[i].length; p++) {
-                                                    let li = document.createElement("span");
-                                                    let km = (p == distances[i].length - 1) ?
-                                                        "Km " : "Km + ";
+                                                    let li = document.createElement("li");
+                                                    let latText = steps[p].start_location.lat();
+                                                    let lngText = steps[p].start_location.lng();
+                                                    // let km = (p == distances[i].length - 1) ?
+                                                    //     "Km " : "Km + ";
+                                                    // li.textContent = (distances[i][p] / 1000)
+                                                    //     .toFixed(2) + km;
                                                     li.textContent = (distances[i][p] / 1000)
-                                                        .toFixed(2) + km;
-                                                    divCols.append(li);
+                                                        .toFixed(2) + " Km (" + latText +
+                                                        ", " + lngText + ") ";
+                                                    divCols.append(ul);
+                                                    ul.append(li);
                                                     totalDistances = totalDistances + distances[
                                                         i][p];
                                                 }
                                                 let TotalText = document.createElement('span');
-                                                TotalText.textContent = "= " + (totalDistances /
+                                                TotalText.textContent = "Total " + (
+                                                    totalDistances /
                                                     1000).toFixed(2) + "Km"
                                                 divCols.append(TotalText);
                                             }

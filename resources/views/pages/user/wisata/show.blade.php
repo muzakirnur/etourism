@@ -233,7 +233,7 @@
                                             var routesSteps = [];
                                             var distances = [];
                                             var routes = result.routes;
-                                            var colors = ['blue', 'red', 'green', 'orange',
+                                            var colors = ['red', 'blue', 'green', 'orange',
                                                 'yellow', 'black'
                                             ];
                                             var stroke = ['#F6D8AE', '#F4D35E'];
@@ -241,7 +241,7 @@
                                                 new google.maps.DirectionsRenderer({
                                                     map: map,
                                                     directions: result,
-                                                    routesIndex: i,
+                                                    routeIndex: i,
                                                     polylineOptions: {
                                                         strokeColor: colors[i],
                                                         strokeWeight: 4,
