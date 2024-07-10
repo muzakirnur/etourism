@@ -50,7 +50,7 @@
     <div class="w-full lg:w-3/4 mx-auto mb-8">
         <h1 class="font-semibold text-center">Rute Lokasi</h1>
         <div id="map" style="width: 100%; height: 600px;padding:0.5rem;"></div>
-        <div id="distances" class="grid grid-rows-3">
+        <div id="distances">
         </div>
     </div>
     <div class="w-full md:w-3/4 mx-auto">
@@ -216,8 +216,8 @@
                                     const pos = {
                                         lat: position.coords.latitude,
                                         lng: position.coords.longitude,
-                                        // lat:5.1934632878968,
-                                        // lng:97.13799595273,
+                                        // lat: 5.1934632878968,
+                                        // lng: 97.13799595273,
                                     };
 
                                     var request = {
@@ -270,22 +270,28 @@
                                                 routesSteps[i] = stepsCoords;
                                                 let divCols = document.createElement("div");
                                                 let h2Text = document.createElement("h2");
+                                                let ul = document.createElement("ul");
                                                 var totalDistances = 0;
                                                 h2Text.textContent = "Jalur " + [i + 1]
                                                 divCols.append(h2Text);
                                                 distanceDiv.append(divCols)
                                                 for (var p = 0; p < distances[i].length; p++) {
-                                                    let li = document.createElement("span");
-                                                    let km = (p == distances[i].length - 1) ?
-                                                        "Km " : "Km + ";
+                                                    let li = document.createElement("li");
+                                                    let latText = steps[p].start_location.lat();
+                                                    let lngText = steps[p].start_location.lng();
+                                                    // let km = (p == distances[i].length - 1) ?
+                                                    //     "" : " + ";
                                                     li.textContent = (distances[i][p] / 1000)
-                                                        .toFixed(2) + km
-                                                    divCols.append(li);
+                                                        .toFixed(2) + " Km (" + latText +
+                                                        ", " + lngText + ") ";
+                                                    divCols.append(ul);
+                                                    ul.append(li);
                                                     totalDistances = totalDistances + distances[
                                                         i][p];
                                                 }
                                                 let TotalText = document.createElement('span');
-                                                TotalText.textContent = "= " + (totalDistances /
+                                                TotalText.textContent = "Total " + (
+                                                    totalDistances /
                                                     1000).toFixed(2) + "Km"
                                                 divCols.append(TotalText);
                                             }
