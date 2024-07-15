@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="w-full p-4 mb-4">
-        <div class="w-full md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-4 mb-4">
+        <div class="w-full md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-4 mb-4">
             @foreach ($data as $row)
                 <div
                     class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4 h-80">

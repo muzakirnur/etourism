@@ -237,7 +237,6 @@
                                                 'yellow', 'black'
                                             ];
                                             var stroke = ['#F6D8AE', '#F4D35E'];
-                                            console.log(result);
                                             for (var i = 0; i < routes.length; i++) {
                                                 new google.maps
                                                     .DirectionsRenderer({

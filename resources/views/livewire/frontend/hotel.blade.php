@@ -10,7 +10,8 @@
                 </a>
                 <div class="p-2">
                     <a href="{{ route('hotel.user.show', Crypt::encrypt($row->id)) }}">
-                        <h5 class="mb-2 md:text-md lg:text-lg font-bold tracking-tight text-gray-900 dark:text-white">
+                        <h5
+                            class="mb-2 md:text-md lg:text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
                             {{ $row->nama }}</h5>
                     </a>
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-hidden">
