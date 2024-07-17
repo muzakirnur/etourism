@@ -1,47 +1,61 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-        <script src="https://kit.fontawesome.com/e5736c35e5.js" crossorigin="anonymous"></script>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        @livewireStyles
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <script src="https://kit.fontawesome.com/e5736c35e5.js" crossorigin="anonymous"></script>
 
-        {{-- Google Maps --}}
+    @livewireStyles
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
 
-        @stack('headScripts')
+    {{-- Google Maps --}}
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <script>
-            if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
-                document.querySelector('html').classList.remove('dark');
-                document.querySelector('html').style.colorScheme = 'light';
-            } else {
-                document.querySelector('html').classList.add('dark');
-                document.querySelector('html').style.colorScheme = 'dark';
-            }
-        </script>          
-    </head>
-    <body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
-        <main class="bg-white">
+    @stack('headScripts')
 
-            <!-- Content -->
-            <div class="w-full">
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script>
+        if (localStorage.getItem('dark-mode') === 'false' || !('dark-mode' in localStorage)) {
+            document.querySelector('html').classList.remove('dark');
+            document.querySelector('html').style.colorScheme = 'light';
+        } else {
+            document.querySelector('html').classList.add('dark');
+            document.querySelector('html').style.colorScheme = 'dark';
+        }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XHBMR6KHMV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-                <div class="min-h-screen h-full">
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-                    <!-- Header -->
-                    {{-- <div class="bg-indigo-100"> --}}
-                            <!-- Logo -->
-                            {{-- <a class="block" href="{{ route('dashboard') }}">
+        gtag('config', 'G-XHBMR6KHMV');
+    </script>
+</head>
+
+<body class="font-inter antialiased bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+    <main class="bg-white">
+
+        <!-- Content -->
+        <div class="w-full">
+
+            <div class="min-h-screen h-full">
+
+                <!-- Header -->
+                {{-- <div class="bg-indigo-100"> --}}
+                <!-- Logo -->
+                {{-- <a class="block" href="{{ route('dashboard') }}">
                                 <svg width="32" height="32" viewBox="0 0 32 32">
                                     <defs>
                                         <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">
@@ -71,40 +85,70 @@
                                     <a href="{{ route('login') }}" class="p-2 hover:bg-indigo-400 rounded-lg hover:text-white ease-in-out transition duration-300">Login</a>
                                 @endauth
                             </div> --}}
-                            @include('layouts.header')
-                    {{-- </div> --}}
+                @include('layouts.header')
+                {{-- </div> --}}
 
-                    <div class="w-full mx-auto px-4 py-8">
-                        {{ $slot }}
-                    </div>
-
+                <div class="w-full mx-auto px-4 py-8">
+                    {{ $slot }}
                 </div>
 
             </div>
 
-            </div>
-            
-        </main>   
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-        @livewireScripts
-        @stack('scripts')
-        <script>
-            window.addEventListener('DOMContentLoaded', function(){
-                window.addEventListener("messages", function (e) {
-                    Swal.fire({
-                        title: e.detail.title,
-                        icon: e.detail.icon,
-                        iconColor: e.detail.iconColor,
-                        timer: 3000,
-                        toast: true,
-                        position: "top-right",
-                        timerProgressBar: true,
-                        showConfirmButton: false,
-                    });
+        </div>
+
+        </div>
+
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    @livewireScripts
+    @stack('scripts')
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            window.addEventListener("messages", function(e) {
+                Swal.fire({
+                    title: e.detail.title,
+                    icon: e.detail.icon,
+                    iconColor: e.detail.iconColor,
+                    timer: 3000,
+                    toast: true,
+                    position: "top-right",
+                    timerProgressBar: true,
+                    showConfirmButton: false,
                 });
-            })
-        </script>
-        <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-            ({key: "AIzaSyDxe3H5gALnxBFOhlc9F3Q38_fw-TGqSB4", v: "weekly"});</script>
-    </body>
+            });
+        })
+    </script>
+    <script>
+        (g => {
+            var h, a, k, p = "The Google Maps JavaScript API",
+                c = "google",
+                l = "importLibrary",
+                q = "__ib__",
+                m = document,
+                b = window;
+            b = b[c] || (b[c] = {});
+            var d = b.maps || (b.maps = {}),
+                r = new Set,
+                e = new URLSearchParams,
+                u = () => h || (h = new Promise(async (f, n) => {
+                    await (a = m.createElement("script"));
+                    e.set("libraries", [...r] + "");
+                    for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+                    e.set("callback", c + ".maps." + q);
+                    a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+                    d[q] = f;
+                    a.onerror = () => h = n(Error(p + " could not load."));
+                    a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+                    m.head.append(a)
+                }));
+            d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() =>
+                d[l](f, ...n))
+        })
+        ({
+            key: "AIzaSyDxe3H5gALnxBFOhlc9F3Q38_fw-TGqSB4",
+            v: "weekly"
+        });
+    </script>
+</body>
+
 </html>
