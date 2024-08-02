@@ -4,6 +4,9 @@
         <!-- Welcome banner -->
         <x-dashboard.welcome-banner />
 
+        <a href="{{ route('export.pdf') }}" class="bg-red-500 hover:bg-red-600 p-2 text-white rounded-lg">Export
+            Laporan</a>
+
         <!-- Dashboard actions -->
         <div class="sm:flex sm:justify-between sm:items-center mb-8">
 
@@ -40,7 +43,8 @@
                     <h2 class="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-2">Users</h2>
                     <div class="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase mb-1">Total</div>
                     <div class="flex items-start">
-                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{{ $users }}</div>
+                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100 mr-2">{{ $users }}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -50,6 +50,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware('admin')->prefix('admin')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+        Route::get('/dashboard/export', [DashboardController::class, 'export'])->name('export.pdf');
+
         Route::get('user', [UserController::class, 'index'])->name('user.index');
 
         /* Route for Wisata */
