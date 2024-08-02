@@ -4,8 +4,10 @@
         <!-- Welcome banner -->
         <x-dashboard.welcome-banner />
 
-        <a href="{{ route('export.pdf') }}" class="bg-red-500 hover:bg-red-600 p-2 text-white rounded-lg">Export
-            Laporan</a>
+        @can('super')
+            <a href="{{ route('export.pdf') }}" class="bg-red-500 hover:bg-red-600 p-2 text-white rounded-lg">Export
+                Laporan</a>
+        @endcan
 
         <!-- Dashboard actions -->
         <div class="sm:flex sm:justify-between sm:items-center mb-8">
