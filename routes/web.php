@@ -21,7 +21,7 @@ use App\Models\Wisata;
 |
 */
 
-Route::redirect('/', 'login');
+Route::redirect('/', 'home');
 
 Route::get('contact', function(){
     return view('pages.user.contact.index');
@@ -36,16 +36,16 @@ Route::get('tentang/struktur', function(){
     return view('pages.user.profile.struktur');
 })->name('tentang.struktur');
 
+Route::get('home', [UserUserController::class, 'index'])->name('index');
+Route::get('wisata', [WisataController::class, 'index'])->name('user.wisata.index');
+Route::get('wisata/{id}', [WisataController::class, 'show'])->name('user.wisata.show');
+Route::get('hotel', [HotelController::class, 'index'])->name('hotel.user.index');
+Route::get('hotel/{id}', [HotelController::class, 'show'])->name('hotel.user.show');
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     // Route for the getting the data feed
     Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
-
-    Route::get('home', [UserUserController::class, 'index'])->name('index');
-    Route::get('wisata', [WisataController::class, 'index'])->name('user.wisata.index');
-    Route::get('wisata/{id}', [WisataController::class, 'show'])->name('user.wisata.show');
-    Route::get('hotel', [HotelController::class, 'index'])->name('hotel.user.index');
-    Route::get('hotel/{id}', [HotelController::class, 'show'])->name('hotel.user.show');
 
     Route::middleware('admin')->prefix('admin')->group(function(){
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

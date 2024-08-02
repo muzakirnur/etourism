@@ -54,7 +54,12 @@
         <div id="distances" class="grid grid-rows-3">
         </div>
     </div>
-    <livewire:hotel.base-review :hotel="$hotel" />
+    @guest
+        <p class="font-semibold text-center mb-4">Silahkan Login untuk menambahkan review!</p>
+    @endguest
+    @auth
+        <livewire:hotel.base-review :hotel="$hotel" />
+    @endauth
     @if (count($hotel->rating) > 0)
         <div class="w-full lg:w-3/4 mx-auto mb-4">
             <div class="flex items-center justify-center">
