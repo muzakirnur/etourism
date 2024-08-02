@@ -96,6 +96,7 @@ class BaseReview extends Component
             'iconColor' => 'green'
         ]);
         $this->edit = false;
+        $this->emit('reviewAdded');
     }
 
     public function setStar($star)
