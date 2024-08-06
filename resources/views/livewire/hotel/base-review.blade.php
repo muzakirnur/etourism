@@ -203,7 +203,7 @@
         Livewire.on('reviewAdded', () => {
             setTimeout(() => {
                 location.reload();
-            }, 3000);
+            }, 500);
         });
     </script>
 @endpush
