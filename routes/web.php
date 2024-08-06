@@ -21,10 +21,14 @@ use App\Models\Wisata;
 |
 */
 
-Route::redirect('/', 'home');
+Route::redirect('/', 'login');
 
 Route::get('contact', function(){
-    return view('pages.user.contact.index');
+    if(!auth()->user()){
+        return redirect()->route('login')->with('error', 'Harap Login Terlebih Dahulu!');
+    }else{
+        return view('pages.user.contact.index');
+    }
 })->name('contact');
 Route::get('tentang/sejarah', function(){
     return view('pages.user.profile.sejarah');

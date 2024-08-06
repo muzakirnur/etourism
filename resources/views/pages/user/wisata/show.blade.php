@@ -53,7 +53,12 @@
         <div id="distances">
         </div>
     </div>
-    <livewire:wisata.base-review :wisata="$wisata" />
+    @guest
+        <p class="font-semibold text-center mb-4">Silahkan Login untuk menambahkan review!</p>
+    @endguest
+    @auth
+        <livewire:wisata.base-review :wisata="$wisata" />
+    @endauth
     @if (count($wisata->rating) > 0)
         <div class="w-full lg:w-3/4 mx-auto mb-4">
             <div class="flex items-center justify-center">

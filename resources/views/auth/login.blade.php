@@ -6,6 +6,11 @@
                 {{ session('status') }}
             </div>
         @endif
+        @if (session('error'))
+            <div class="mb-4 font-medium text-sm text-red-600">
+                {{ session('error') }}
+            </div>
+        @endif
         <!-- Form -->
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -30,6 +35,7 @@
                 <x-jet-button class="ml-3">
                     {{ __('Sign in') }}
                 </x-jet-button>
+                <a href="{{ route('index') }}" class="btn bg-primary text-white hover:bg-primary-hover">Guest</a>
             </div>
         </form>
         <x-jet-validation-errors class="mt-4" />
