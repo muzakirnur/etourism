@@ -93,6 +93,7 @@ class BaseReview extends Component
         }
         $this->rating->update([
             'bintang' => $this->bintang,
+            'ulasan' => $this->ulasan,
             'tanggal' => $this->date,
             'jenis_kunjungan' => $this->jenis,
         ]);
